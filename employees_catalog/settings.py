@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'mptt',
     'employees_catalog',
     'employees',
+    'django_bootstrap5',
 ]
 
 MIDDLEWARE = [
