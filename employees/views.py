@@ -4,4 +4,5 @@ from .models import Employees
 
 
 def index(request):
+    # return render(request, 'index.html', {'workers': Employees.objects.all()})
     return render(request, 'index.html', {'workers': Employees.objects.all()})
