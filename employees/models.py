@@ -7,7 +7,7 @@ class Employees(MPTTModel):
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
     employment_position = models.CharField(max_length=200)
     salary = models.IntegerField()
-    start_date = models.DateTimeField(auto_now_add=False)
+    start_date = models.DateField(auto_now_add=False)
 
 
     def __str__(self):
