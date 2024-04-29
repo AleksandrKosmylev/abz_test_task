@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'django_extensions',
     'django_seed',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

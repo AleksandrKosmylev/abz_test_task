@@ -12,6 +12,7 @@ django-mptt = "^0.16.0"
 factory-boy = "^3.3.0"
 django-bootstrap5 = "^24.2"
 psycopg2 = "^2.9.9"
+django-filter = "^24.2"
 
 
 [build-system]

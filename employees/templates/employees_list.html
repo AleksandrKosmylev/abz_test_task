@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% load django_bootstrap5 %}
+
+
+<!--
+<div class="row">
+  
+  <div class="col-md-4 order-md-1 ">
+  {% for employee in employees_list  %}
+  <ul>
+    <li>
+      <a href="#">{{employee}}</a>
+    </li>
+  </ul>
+  {% endfor %}
+  </div>
+  <div class="col-md-4 order-md-2 ">
+    <p> tackle</p>
+  </div>
+</div>
+-->
+  <div class="card mb-3">
+    <div class="card-body bg-light">
+        <form method="get" class="form-inline center">
+            {% bootstrap_form filter.form %}
+            
+            <input class="btn btn-primary m-3" type="submit" value="Фильтр"/>
+  
+        </form>
+    </div>
+  </div>
+
+  <table class="table-primary">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>ФИО</th>
+        <th>Должность</th>
+        <th>Дата приема на работу</th>
+        <th>Размер заработной платы</th>
+        <th>Руководитель</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for employee in filter.qs %}
+    <tr>
+      <td>{{employee.id}}</td>
+      <td>{{employee.name}}</td>
+      <td>{{employee.employment_position}}</td>
+      <td>{{employee.start_date}}</td>
+      <td>{{employee.salary}}</td>
+      <td>{{employee.parent}}</td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

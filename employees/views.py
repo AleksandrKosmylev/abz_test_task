@@ -1,8 +1,14 @@
 from django.shortcuts import render
 from .models import Employees
-# Create your views here.
-
+from django.views.generic import ListView
+from django_filters.views import FilterView
+from employees.filter import EmployeesFilter
 
 def index(request):
-    # return render(request, 'index.html', {'workers': Employees.objects.all()})
     return render(request, 'index.html', {'workers': Employees.objects.all()})
+
+
+class EmployeesView(FilterView):
+    model = Employees
+    filterset_class = EmployeesFilter
+    template_name = 'employees_list.html'

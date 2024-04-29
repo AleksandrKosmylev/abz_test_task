@@ -1,28 +1,21 @@
-<!DOCTYPE html>
+{% extends 'layout.html' %}
+{% block content %}
 {% load mptt_tags %}
-<html lang="en">
-<head>
-    <link href="https://cdnjs.com/libraries/twitter-bootstrap/2.0.2" rel="stylesheet">
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
-  <p>check</p>
-  <ul>
-    {% recursetree workers %}
-      <li>
-        {{ node.name}}
-        job title:{{node.employment_position}}
-        salary: {{node.salary}}
-        start date: {{node.start_date|date:"d.m.Y"}}
+{% load django_bootstrap5 %}
+<ul>
+  {% recursetree workers %}
+    <li>
+      {{ node.name}}
+      job title:{{node.employment_position}}
+      salary: {{node.salary}}
+      start date: {{node.start_date|date:"d.m.Y"}}
 
-          {% if not node.is_leaf_node %}
-              <ul class="children">
-                  {{ children }}
-              </ul>
-          {% endif %}
-      </li>
-    {% endrecursetree %}
-  </ul>
-</body>
-</html>
+        {% if not node.is_leaf_node %}
+            <ul class="children">
+                {{ children }}
+            </ul>
+        {% endif %}
+    </li>
+  {% endrecursetree %}
+</ul>
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.urls import path
-from employees import views
+from employees.views import index, EmployeesView
 
 urlpatterns = [
-    path('', views.index),
+    path('', index),
+    path('employees/', EmployeesView.as_view(), name='employees'),
 ]
