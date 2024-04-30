@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'employees_catalog',
     'employees',
     'django_bootstrap5',
-    'django_extensions',
-    'django_seed',
     'django_filters',
 ]
 
