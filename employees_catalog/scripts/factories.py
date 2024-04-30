@@ -3,20 +3,9 @@ from employees.models import Employees
 import random
 from datetime import datetime
 
-fake = Faker()
-# Faker.seed(4321)
-
-"""
-import factory
-# factory.random.reseed_random(SEED)
-class EmployeesFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = Employees
-
-    name = '3rd_Vasya'
-    parent = Employees.objects.get(name='Harold')
-    print(name)
-"""
+# fake = Faker(['en_US','ru_RU','de_DE','it_IT'])
+fake = Faker(['ru_RU','en_US','de_DE','it_IT','fr_FR'])
+Faker.seed(1234)
 
 
 def run(*args):
@@ -38,7 +27,7 @@ def run(*args):
             100000,
             80000
         ]
-        random.seed(1234)
+        # random.seed(1234)
         head_of_depertment = []
         deputy_head_of_depertment = []
         group_head = []
@@ -69,7 +58,7 @@ def run(*args):
             random_parent = random.choice(group_head)
             parent = Employees.objects.get(name=random_parent)
             Employees.objects.create(name=name, parent=parent, employment_position=positions[3], salary=salaries[3], start_date=f_date)
-        for tier_5 in range(32):
+        for tier_5 in range(50000):
             f_date = fake.date_between_dates(date_start=datetime(2000, 1, 1), date_end=datetime(2023, 12, 31))
             name = fake.name()
             random_parent = random.choice(chief_specialist)

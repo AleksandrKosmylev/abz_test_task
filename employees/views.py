@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from .models import Employees
-from django.views.generic import ListView
 from django_filters.views import FilterView
 from employees.filter import EmployeesFilter
+
 
 def index(request):
     return render(request, 'index.html', {'workers': Employees.objects.all()})
@@ -11,4 +11,5 @@ def index(request):
 class EmployeesView(FilterView):
     model = Employees
     filterset_class = EmployeesFilter
+    ordering = ['id']
     template_name = 'employees_list.html'

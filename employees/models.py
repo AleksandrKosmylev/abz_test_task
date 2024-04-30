@@ -3,7 +3,7 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 
 class Employees(MPTTModel):
-    name = models.CharField(max_length=100, unique=True, verbose_name='ФИО')
+    name = models.CharField(max_length=200, unique=False, verbose_name='ФИО')
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children', verbose_name='Руководитель')
     employment_position = models.CharField(max_length=200, verbose_name='Должность')
     salary = models.IntegerField(verbose_name='Размер заработной платы')
@@ -11,7 +11,6 @@ class Employees(MPTTModel):
 
     def __str__(self):
         return self.name
-        # return self.name + "Position: " + self.employment_position
-
+    
     class MPTTMeta:
         order_insertion_by = ['name']

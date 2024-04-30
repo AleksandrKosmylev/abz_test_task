@@ -11,19 +11,13 @@
   <title>Employees</title>
 </head>
 <body>
-  
+
   <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-1 justify-content-center mb-md-0">
+    <div>
         <a href="/" class="btn btn-dark">Emploeeys tree</a>
-        <a href="{% url 'employees' %}" class="btn btn-dark">Emploeeys tree</a>
+        <a href="{% url 'employees' %}" class="btn btn-dark">Emploeeys list</a>
         {% if user.is_authenticated %}
         {% else %}
-      </ul>
-      <div class="text-end">
-        <a href="#" class="btn btn-dark" >Login</a>
-        <a href="#" class="btn btn btn-dark">Registration</a>
-      </div>
       {% endif %}
     </div>
 </div>
