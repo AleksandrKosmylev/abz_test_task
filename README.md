@@ -20,11 +20,7 @@ pipx install poetry
    ```
     poetry shell
    ```
-4. Мигрировать данные 
-   ```
-    make migration
-
-5. Запустить  приложение:
+4. Запустить приложение:
    ```
    make run 
    ```
