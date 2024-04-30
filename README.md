@@ -31,3 +31,5 @@ pipx install poetry
     make add_employees
     make delete_employees
    ```
+
+#### Из тестового задания выполнена обязательная 1ая часть и пункты 1-5 из 2ой части.
