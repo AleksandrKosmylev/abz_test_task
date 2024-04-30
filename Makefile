@@ -13,3 +13,5 @@ migration_zero:
 	python manage.py migrate employees zero
 install:
 	poetry install --no-root
+shell:
+	poetry shell
