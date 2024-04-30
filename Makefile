@@ -15,3 +15,7 @@ install:
 	poetry install --no-root
 shell:
 	poetry shell
+full_install:
+	poetry install --no-root
+	poetry shell
+	python manage.py migrate
