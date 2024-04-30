@@ -3,8 +3,8 @@ from employees.models import Employees
 import random
 from datetime import datetime
 
-# fake = Faker(['en_US','ru_RU','de_DE','it_IT'])
-fake = Faker(['ru_RU','en_US','de_DE','it_IT','fr_FR'])
+
+fake = Faker(['ru_RU', 'en_US', 'de_DE', 'it_IT', 'fr_FR'])
 Faker.seed(1234)
 
 
