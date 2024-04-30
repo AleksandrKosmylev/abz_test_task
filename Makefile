@@ -5,7 +5,6 @@ delete_employees:
 run:
 	python manage.py runserver
 migration:
-	python manage.py makemigrations
 	python manage.py migrate
 flush_database:
 	python manage.py flush

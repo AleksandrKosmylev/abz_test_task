@@ -2,19 +2,29 @@
 Тестовое задание для abz.agency
 
 ### Установка
-1. Скачать репозиторий:
+Приложение использует  виртульное окружение Poetry
+```
+pipx install poetry
+```
+
+1. Скачать репозиторий и перейти в директорию с приложением :
     ```
-    git@github.com:AleksandrKosmylev/abz_test_task.git
+   git@github.com:AleksandrKosmylev/abz_test_task.git
+   cd abz_test_task/
     ```
-2. Перейти в директорию  : 
+2. Установить зависимости: 
     ```
-      cd abz_test_task/
+    make install
     ```
-3.  Установить закисимости и подготовить приложениек запуску:
+3. Активировать виртуальное окружение
    ```
-   make full_install
+    poetry shell
    ```
-4. Запустить приложение
+4. Мигрировать данные 
    ```
-    make run
+    make migration
+   ```
+5. Запустить  приложение:
+   ```
+   make run 
    ```
