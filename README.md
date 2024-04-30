@@ -9,7 +9,7 @@ pipx install poetry
 
 1. Скачать репозиторий и перейти в директорию с приложением :
     ```
-   git@github.com:AleksandrKosmylev/abz_test_task.git
+   git clone git@github.com:AleksandrKosmylev/abz_test_task.git
    cd abz_test_task/
     ```
 2. Установить зависимости: 
@@ -23,6 +23,11 @@ pipx install poetry
 4. Мигрировать данные 
    ```
     make migration
+   ```
+*. Заполнить приложение данными о сотрудниках
+
+   ```
+    make add_employees
    ```
 5. Запустить  приложение:
    ```
