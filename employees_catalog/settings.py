@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'django_extensions',
     'django_filters',
+    "django_table_sort"
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,74 @@
+  
+<div class="container-fluid">   
+  <h3>Поиск сотрудника</h3>
+  <form method="GET" action=".">
+
+    <div class="form-row">
+        <div class="form-group col-10">
+            <div class="input-group">
+              <input class="form-control py-2 border-right-0 border" type="search" name="name_contains" placeholder="ФИО" />
+            </div>
+        </div>        
+    </div>
+    <br>
+    <div class="form-row">
+      <div class="form-group col-10">
+          <div class="input-group">
+            <input class="form-control py-2 border-right-0 border" type="search" name="employment_position_query" placeholder="Позиция" />
+          </div>
+      </div>     
+    </div>
+    <br>
+
+    <button type="submit" class="btn btn-primary">Поиск</button>
+  </form>
+</div>
+
+<br>
+
+<div class="container-fluid ">
+  <table class=" text-center table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>ФИО</th>
+        <th>Должность</th>
+        <th>Дата приема на работу</th>
+        <th>Размер заработной платы</th>
+        <th>Руководитель</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for employee in queryset %}
+        <tr>
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.employment_position}}</td>
+          <td>{{ employee.start_date }}</td>
+          <td>{{ employee.salary }}</td>
+          <td>{{ employee.parent }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+<br>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if queryset.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ queryset.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.
+        </span>
+
+        {% if queryset.has_next %}
+            <a href="?page={{ queryset.next_page_number }}">next</a>
+            <a href="?page={{ queryset.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</div>
