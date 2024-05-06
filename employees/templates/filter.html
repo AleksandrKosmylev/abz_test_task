@@ -1,5 +1,5 @@
   
-<div class="container-fluid">   
+<table class="container-fluid">   
   <h3>Поиск сотрудника</h3>
   <form method="GET" action=".">
 
@@ -8,7 +8,8 @@
             <div class="input-group">
               <input class="form-control py-2 border-right-0 border" type="search" name="name_contains" placeholder="ФИО" />
             </div>
-        </div>        
+        </div>  
+        
     </div>
     
     <br>
@@ -22,27 +23,40 @@
     <br>
     
     
-    <div class="form-row">
-      <div class="form-group col-md-2 col-lg-2">
+    <table class="table table-striped">
+      <th class="form-group col-md-2 col-lg-2">
         <label for="publishDateMin">Период с:</label>
         <input type="date" class="form-control" id="publishDateMin" name="date_min">
-      </div>
-      <div class="form-group col-md-2 col-lg-2">
+      </th>
+      <th class="form-group col-md-2 col-lg-2">
         <label for="publishDateMax">Период по:</label>
         <input type="date" class="form-control" id="publishDateMax" name="date_max">
-      </div>
-    </div>
+      </th>
+    </table>
+    
+    <table class="table table-striped">
+      <th class="form-group col-md-2 col-lg-2">
+        <label for="salaryMin">Зарплата от:</label>
+        <input type="number"  class="form-control" id="salaryMin" name="salary_min">
+      </th>
+      <th class="form-group col-md-2 col-lg-2">
+        <label for="salaryMax">Зарплата до:</label>
+        <input type="number"  class="form-control" id="salaryMax" name="salary_max">
+      </th>
+    </table>
     <br>
     
-    
-
-
-    
-
     <button type="submit" class="btn btn-primary">Поиск</button>
   </form>
-</div>
+</table>
 
+<br>
+
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <input class="btn btn-dark" type="submit"  value="Сортировать">
+</form>
 <br>
 
 <div class="container-fluid ">
@@ -53,7 +67,7 @@
         <th>ФИО</th>
         <th>Должность</th>
         <th>Дата приема на работу</th>
-        <th>Размер заработной платы</th>
+        <th>Зарплата</th>
         <th>Руководитель</th>
       </tr>
     </thead>
