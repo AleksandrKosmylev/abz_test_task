@@ -53,7 +53,6 @@ def show_employees(request):
         form = SimpleForm(request.POST)
         if form.is_valid():
             choice = list(form.cleaned_data.values())[0]
-            print(choice)
             context = {'form': form}
             qs = filter(request).order_by(choice)
         else:
