@@ -13,4 +13,4 @@ class Employees(MPTTModel):
         return self.name
 
     class MPTTMeta:
-        order_insertion_by = ['name']
+        order_insertion_by = ['name', 'start_date']

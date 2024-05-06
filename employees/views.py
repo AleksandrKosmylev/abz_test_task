@@ -16,12 +16,21 @@ def filter(request):
     qs = Employees.objects.all().order_by('id')
     name_contains_query = request.GET.get('name_contains')
     employment_position_query = request.GET.get('employment_position_query')
+    date_min = request.GET.get('date_min')
+    date_max = request.GET.get('date_max')
 
     if is_valid_queryparam(name_contains_query):
         qs = qs.filter(name__icontains=name_contains_query)
 
     if is_valid_queryparam(employment_position_query):
         qs = qs.filter(Q(employment_position__icontains=employment_position_query))
+
+
+    if is_valid_queryparam(date_min):
+        qs = qs.filter(start_date__gte=date_min)
+
+    if is_valid_queryparam(date_max):
+        qs = qs.filter(start_date__lt=date_max)
 
     return qs
 
@@ -38,4 +47,7 @@ def show_employees(request):
     except EmptyPage:
         context['queryset'] = current_page.page(current_page.num_pages)
 
+    # print(Employees.objects.values('parent'))
     return render(request, "employees_list.html", context)
+
+
