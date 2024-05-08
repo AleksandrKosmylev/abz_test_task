@@ -9,11 +9,11 @@ class EmployeesForm(forms.ModelForm):
 
 
 CHOICES = {
-    "name": "ФИО",
-    "employment_position": "Должность",
-    "start_date": "Дата приема на работу",
-    "salary": "Зарплата",
-    "parent": "Руководитель"
+    "name": "Full name",
+    "employment_position": "Position",
+    "start_date": "Start date",
+    "salary": "Salary",
+    "parent": "Supervisor"
 }
 
 
@@ -22,5 +22,5 @@ class SimpleForm(forms.Form):
         initial="name",
         widget=forms.RadioSelect,
         choices=CHOICES, required=True,
-        label="Сортировка"
+        label="Sort by"
     )

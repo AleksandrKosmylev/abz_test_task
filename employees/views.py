@@ -17,7 +17,7 @@ def is_valid_queryparam(param):
     return param != '' and param is not None
 
 
-def filter(request):
+def filter_employees(request):
     # qs = Employees.objects.all().order_by('id')
     qs = Employees.objects.all()
     name_contains_query = request.GET.get('name_contains')
@@ -28,22 +28,22 @@ def filter(request):
     salary_max = request.GET.get('salary_max')
 
     if is_valid_queryparam(name_contains_query):
-        qs = qs.filter(name__icontains=name_contains_query)
+        qs = qs.filter_employees(name__icontains=name_contains_query)
 
     if is_valid_queryparam(employment_position_query):
-        qs = qs.filter(Q(employment_position__icontains=employment_position_query))
+        qs = qs.filter_employees(Q(employment_position__icontains=employment_position_query))
 
     if is_valid_queryparam(date_min):
-        qs = qs.filter(start_date__gte=date_min)
+        qs = qs.filter_employees(start_date__gte=date_min)
 
     if is_valid_queryparam(date_max):
-        qs = qs.filter(start_date__lt=date_max)
+        qs = qs.filter_employees(start_date__lt=date_max)
 
     if is_valid_queryparam(salary_min):
-        qs = qs.filter(salary__gte=salary_min)
+        qs = qs.filter_employees(salary__gte=salary_min)
 
     if is_valid_queryparam(salary_max):
-        qs = qs.filter(salary__lt=salary_max)
+        qs = qs.filter_employees(salary__lt=salary_max)
 
     return qs
 
@@ -58,11 +58,11 @@ def show_employees(request):
         if form.is_valid():
             choice = list(form.cleaned_data.values())[0]
             context = {'form': form}
-            qs = filter(request).order_by(choice)
+            qs = filter_employees(request).order_by(choice)
         else:
             raise Http404
     else:
-        qs = filter(request).order_by('id')
+        qs = filter_employees(request).order_by('id')
 
     current_page = Paginator(list(qs), 50)
     page = request.GET.get('page')
