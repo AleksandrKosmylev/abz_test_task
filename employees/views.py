@@ -1,7 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import Http404
 from django.shortcuts import render
 from django.db.models import Q
+
+
 from .models import Employees
 from .forms import SimpleForm
 
@@ -45,6 +48,7 @@ def filter(request):
     return qs
 
 
+@login_required(login_url="/users/login/")
 def show_employees(request):
 
     form = SimpleForm()

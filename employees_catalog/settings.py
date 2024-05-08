@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'mptt',
     'employees_catalog',
     'employees',
+    'users',
     'django_bootstrap5',
     'django_extensions',
     'django_filters',
