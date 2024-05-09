@@ -4,8 +4,7 @@ from employees_catalog import settings
 
 
 class EmployeesForm(forms.ModelForm):
-    # start_date = models.DateField(auto_now_add=False, verbose_name='Start_date')
-    # start_date = forms.DateField(required=False, input_formats=settings.DATE_INPUT_FORMATS)
+    start_date= forms.DateField(required=False, input_formats=['%d.%m.%Y'])
     class Meta:
         model = Employees
         fields = ['name', 'parent', 'employment_position', 'salary', 'start_date']

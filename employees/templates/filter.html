@@ -76,7 +76,7 @@
         <tr>
           <td><a href="{% url 'employee_update' pk=employee.pk %}">{{ employee.name }}</a></td>
           <td>{{ employee.employment_position}}</td>
-          <td>{{ employee.start_date }}</td>
+          <td>{{ employee.start_date|date:"d.m.Y" }}</td>
           <td>{{ employee.salary }}</td>
           <td>{{ employee.parent }}</td>
           <td><a href="{% url 'employee_delete' pk=employee.pk %}">Delete</a></td>
