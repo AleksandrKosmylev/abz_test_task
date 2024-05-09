@@ -68,16 +68,18 @@
         <th>Start date</th>
         <th>Salary</th>
         <th>Supervisor</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       {% for employee in queryset %}
         <tr>
-          <td><a href="{% url 'employees_update' pk=employee.pk %}">{{ employee.name }}</a></td>
+          <td><a href="{% url 'employee_update' pk=employee.pk %}">{{ employee.name }}</a></td>
           <td>{{ employee.employment_position}}</td>
           <td>{{ employee.start_date }}</td>
           <td>{{ employee.salary }}</td>
           <td>{{ employee.parent }}</td>
+          <td><a href="{% url 'employee_delete' pk=employee.pk %}">Delete</a></td>
         </tr>
       {% endfor %}
     </tbody>

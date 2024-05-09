@@ -27,6 +27,7 @@
             {% csrf_token %}
             <input type="submit" class="btn btn-warning" value="Log out"/>
           </form>
+          <a href="{% url 'employee_create' %}" class="btn btn-warning" >Add employee</a>
         {% else %}
           <a href="{% url 'login' %}" class="btn btn-warning" >Login</a>
           <a href="{% url 'register' %}" class="btn btn-warning">Register</a>

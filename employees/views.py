@@ -5,7 +5,7 @@ from django.http import Http404
 from django.shortcuts import render
 from django.db.models import Q
 from django.urls import reverse_lazy
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, CreateView, DeleteView
 
 from .models import Employees
 from .forms import SimpleForm, EmployeesForm
@@ -78,6 +78,18 @@ def show_employees(request):
     return render(request, "employees_list.html", context)
 
 
+class EmployeeCreateView(LoginRequiredMixin, CreateView):
+    model = Employees
+    form_class = EmployeesForm
+    template_name = 'edit_form.html'
+    login_url = reverse_lazy('login')
+    extra_context = {
+        'title': 'New Employee',
+        'btn_text': 'Add employee',
+        'btn_class': 'btn-primary'}
+    success_url = reverse_lazy('employees')
+
+
 class EmployeeUpdateView(LoginRequiredMixin, UpdateView):
     model = Employees
     form_class = EmployeesForm
@@ -86,5 +98,16 @@ class EmployeeUpdateView(LoginRequiredMixin, UpdateView):
         'title': 'Edit employee',
         'btn_text': 'Update',
         'btn_class': 'btn-primary'}
+    template_name = 'edit_form.html'
+    success_url = reverse_lazy('employees')
+
+
+class EmployeeDeleteView(LoginRequiredMixin, DeleteView):
+    model = Employees
+    extra_context = {
+        'description': 'Are you sure you want to delete',
+        'title': 'Delete employee',
+        'btn_text': 'Yes, delete',
+        'btn_class': 'btn-danger'}
     template_name = 'edit_form.html'
     success_url = reverse_lazy('employees')
