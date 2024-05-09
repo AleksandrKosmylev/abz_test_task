@@ -68,6 +68,7 @@
         <th>Start date</th>
         <th>Salary</th>
         <th>Supervisor</th>
+        <th>Photo</th>
         <th></th>
       </tr>
     </thead>
@@ -79,6 +80,7 @@
           <td>{{ employee.start_date|date:"d.m.Y" }}</td>
           <td>{{ employee.salary }}</td>
           <td>{{ employee.parent }}</td>
+          <td>{{ employee.photo }}</td>
           <td><a href="{% url 'employee_delete' pk=employee.pk %}">Delete</a></td>
         </tr>
       {% endfor %}
