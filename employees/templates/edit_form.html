@@ -1,0 +1,11 @@
+{% load django_bootstrap5 %}
+
+  <h2 class="mt-3">
+      {{title}}
+  </h2>
+  <p>{{description}}</p>
+  <form method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <input class="btn {{ btn_class }}" type="submit" value="{{ btn_text }}">
+  </form>

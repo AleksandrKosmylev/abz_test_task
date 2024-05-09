@@ -63,7 +63,6 @@
   <table id="table_id" class=" display text-center table-bordered">
     <thead class="thead-dark">
       <tr>
-        <th>ID</th>
         <th>Full name</th>
         <th>Position</th>
         <th>Start date</th>
@@ -74,8 +73,7 @@
     <tbody>
       {% for employee in queryset %}
         <tr>
-          <td>{{ employee.id }}</td>
-          <td>{{ employee.name }}</td>
+          <td><a href="{% url 'employees_update' pk=employee.pk %}">{{ employee.name }}</a></td>
           <td>{{ employee.employment_position}}</td>
           <td>{{ employee.start_date }}</td>
           <td>{{ employee.salary }}</td>
