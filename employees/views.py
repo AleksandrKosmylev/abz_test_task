@@ -81,7 +81,7 @@ def show_employees(request):
 class EmployeeUpdateView(LoginRequiredMixin, UpdateView):
     model = Employees
     form_class = EmployeesForm
-    login_url = reverse_lazy('/users/login/')
+    login_url = reverse_lazy('login')
     extra_context = {
         'title': 'Edit employee',
         'btn_text': 'Update',
