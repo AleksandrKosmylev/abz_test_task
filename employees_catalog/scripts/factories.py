@@ -2,16 +2,38 @@ from faker import Faker
 from employees.models import Employees
 import random
 from datetime import datetime
+from django.core.files import File
 
+from employees_catalog.settings import MEDIA_ROOT
 
 fake = Faker(['ru_RU', 'en_US', 'de_DE', 'it_IT', 'fr_FR'])
 Faker.seed(1234)
+
+
+import os
+import random
+# directory = 'media/employees_photo'
+directory = os.path.join(MEDIA_ROOT, 'employees_photo')
+files = os.listdir(directory)
+file = random.choice(files)
+# with open(os.path.join(directory, file), 'r') as f:
+    
 
 
 def run(*args):
     if 'clean_data' in args:
         Employees.objects.all().delete()
         print("Employees database successfully cleaned")
+    elif 'add_photo' in args:
+
+        for employee in Employees.objects.all():
+            # print(employee.values('name'))
+            print(employee.id)
+        x = Employees.objects.get(id=703)
+        with open(os.path.join(directory, file), 'rb') as f:
+            x.photo.save("1.jpg", File(f), save=True)
+        x.save()
+        print(x.name)
     else:
         positions = [
             'head of depertment',

@@ -80,7 +80,9 @@
           <td>{{ employee.start_date|date:"d.m.Y" }}</td>
           <td>{{ employee.salary }}</td>
           <td>{{ employee.parent }}</td>
-          <td>{{ employee.photo }}</td>
+          <td>
+            <img src={{employee.photo.url}} width="50" height="50" />
+          </td>
           <td><a href="{% url 'employee_delete' pk=employee.pk %}">Delete</a></td>
         </tr>
       {% endfor %}
