@@ -2,9 +2,12 @@ add_employees:
 	python manage.py runscript factories
 delete_employees:
 	python manage.py runscript factories --script-args clean_data
+photo_employees:
+	python manage.py runscript factories --script-args add_photo
 run:
 	python manage.py runserver
 migration:
+	python manage.py makemigrations
 	python manage.py migrate
 flush_database:
 	python manage.py flush
