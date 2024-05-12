@@ -15,7 +15,9 @@ class Employees(MPTTModel):
     employment_position = models.CharField(max_length=200, verbose_name='Position')
     salary = models.IntegerField(verbose_name='Salary')
     start_date = models.DateField(auto_now_add=False, verbose_name='Start_date')
-    photo = models.ImageField(default="employees_photo/jack_of_hearts.jpg", blank=True, upload_to='images/%Y/%m/%d')
+    #photo = models.ImageField(default="employees_photo/jack_of_hearts.jpg", blank=True, upload_to='images/%Y/%m/%d')
+    # photo = models.ImageField(default="employees_photo/jack_of_hearts.jpg", blank=True, upload_to='employees_photo')
+    photo = models.ImageField(null=True, default="employees_photo/jack_of_hearts.jpg", blank=True, upload_to='images/')
 
 
     def __str__(self):
