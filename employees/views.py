@@ -1,14 +1,11 @@
-import os
-
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView, CreateView, DeleteView
-
 from .models import Employees
 from .forms import SimpleForm, EmployeesForm
 from django.core.files.storage import FileSystemStorage
@@ -55,7 +52,6 @@ def filter_employee(request):
 
 @login_required(login_url="/users/login/")
 def show_employees(request):
-
     form = SimpleForm()
     context = {'form': form}
     if request.method == "POST":
@@ -68,7 +64,6 @@ def show_employees(request):
             raise Http404
     else:
         qs = filter_employee(request).order_by('id')
-
     current_page = Paginator(list(qs), 50)
     page = request.GET.get('page')
     try:
@@ -77,7 +72,6 @@ def show_employees(request):
         context['queryset'] = current_page.page(1)
     except EmptyPage:
         context['queryset'] = current_page.page(current_page.num_pages)
-
     return render(request, "employees_list.html", context)
 
 
@@ -92,75 +86,21 @@ class EmployeeCreateView(LoginRequiredMixin, CreateView):
         'btn_class': 'btn-primary'}
     success_url = reverse_lazy('employees')
 
+
 """
 def update_employee(request, pk=None):
     employee = Employees.objects.get(pk=pk)
     if request.method != 'POST':
         form = EmployeesForm(instance=employee)
-
-        """
-"""
-        # photo = request.FILES['photo']
-        photo = request.FILES
-        print(photo, 'photo')
-        # file_name = request.FILES['photo'].name
-        file_name = request.FILES.name
-        fs = FileSystemStorage()
-        file = fs.save(photo.name, photo)
-        file_url = fs.url(file)
-        report = file_name
-        """
-"""
+        return render(request, "edit_form.html", {"form": form})
     else:
         instance = get_object_or_404(Employees, pk=pk)
         form = EmployeesForm(request.POST or None, request.FILES, instance=instance)
         if form.is_valid():
             instance = form.save(commit=False)
             instance.save()
-            # return HttpResponseRedirect(instance.get_absolute_url())
-
-        context = {
-            "name": instance.name,
-            "instance": instance,
-            "form": form
-        }
-    context = {'form': form}
-    # redirect("employees_list.html")
-    return render(request, "edit_form.html",context)
+            return redirect("employees")
 """
-"""
-def update_employee(request, pk):
-    employee = Employees.objects.get(id=pk)
-
-    if request.method != 'POST':
-        form = EmployeesForm(instance=employee, prefix='form')
-        # request.session['return_path'] = request.META.get('HTTP_REFERER','/')
-    else:
-        form = EmployeesForm(request.POST, instance=employee, prefix='form')
-        if form.is_valid():
-            print(form.cleaned_data, 'cleaned data')
-            employee = form.save(commit=False)
-            image_path = employee.photo.url
-            if os.path.exists(image_path):
-                print('curwa')
-                os.remove(image_path)
-            employee.save()
-            ##
-            
-            image_path = employee.photo.url
-            print(image_path, 'image_path')
-
-
-            my_field_value = form.cleaned_data
-            print(my_field_value, 'myfield value')
-            ##
-        else:
-            print('doesnt work')
-        return HttpResponseRedirect(request.session['return_path'])
-    context = {'form': form}
-    return render(request, 'edit_form.html', context)
-"""
-
 
 
 class EmployeeUpdateView(LoginRequiredMixin, UpdateView):
@@ -173,7 +113,6 @@ class EmployeeUpdateView(LoginRequiredMixin, UpdateView):
         'btn_class': 'btn-primary'}
     template_name = 'edit_form.html'
     success_url = reverse_lazy('employees')
-
 
 
 class EmployeeDeleteView(LoginRequiredMixin, DeleteView):
