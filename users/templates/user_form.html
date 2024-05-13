@@ -1,11 +1,14 @@
+{% extends 'layout.html' %}
+{% block content %}
+
 {% load django_bootstrap5 %}
 
-<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Registration</title>
 </head>
-<body>
+
     <h2 class="mt-2">
         {{title}}
     </h2>
@@ -16,5 +19,4 @@
         <input class="btn {{ btn_class }}" type="submit" value="{{ btn_text }}">
     </form>
 
-</body>
-</html>
+{% endblock %}

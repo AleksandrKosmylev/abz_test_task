@@ -2,13 +2,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import Http404
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render
 from django.db.models import Q
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView, CreateView, DeleteView
 from .models import Employees
 from .forms import SimpleForm, EmployeesForm
-from django.core.files.storage import FileSystemStorage
 
 
 def index(request):
@@ -46,7 +45,6 @@ def filter_employee(request):
 
     if is_valid_queryparam(salary_max):
         qs = qs.filter(salary__lt=salary_max)
-
     return qs
 
 

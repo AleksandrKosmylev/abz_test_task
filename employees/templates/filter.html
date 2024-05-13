@@ -1,4 +1,6 @@
+{% extends 'layout.html' %}
 {% load django_bootstrap5 %}
+{% block content %}
 <table class="container-fluid">   
   <h3>Employees search</h3>
   <form method="GET" action=".">
@@ -128,4 +130,5 @@
 } );
 </script>
 
+{% endblock %}
 {% endblock %}

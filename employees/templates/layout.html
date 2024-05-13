@@ -10,14 +10,10 @@
   <link rel="stylesheet" href="{% static 'django_table_sort.css' %}"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
  <title>Employees</title>
-  
-  
 </head>
 <body>
 
-
-  <div class="container">
-    <div class="nav col-12 col-lg-auto me-lg-auto mb-1 justify-content-center mb-md-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a href="/" class="btn btn-dark">Employees tree</a>
         
         {% if user.is_authenticated %}
@@ -32,8 +28,8 @@
           <a href="{% url 'login' %}" class="btn btn-warning" >Login</a>
           <a href="{% url 'register' %}" class="btn btn-warning">Register</a>
         {% endif %}
-    </div>
-</div>
+    </nav>
+
   <br>
   <div class="container wrapper flex-grow-1">
     {% block content %}{% endblock %}

@@ -1,22 +1,13 @@
 from django import forms
 from employees.models import Employees
-from employees_catalog import settings
 
 
 class EmployeesForm(forms.ModelForm):
-    #start_date= forms.DateField(required=False, input_formats=['%d.%m.%Y'])
     start_date = forms.DateField(
         widget=forms.DateInput(attrs={"type": "date"})
     )
-    photo=forms.ImageField(label="photo")
-    """
-    date_of_birth = forms.DateField(
-            label="Date of Birth",
-            required=True,
-            widget=forms.DateInput(format="%Y-%m-%d", attrs={"type": "date"}),
-            input_formats=["%Y-%m-%d"]
-        )
-    """
+    photo = forms.ImageField(label="photo")
+
     class Meta:
         model = Employees
         fields = ['name', 'parent', 'employment_position', 'salary', 'start_date', 'photo']

@@ -2,19 +2,29 @@
 {% block content %}
 {% load mptt_tags %}
 {% load django_bootstrap5 %}
-<ul>
+<style>
+li {
+  list-style: none;
+}
+</style>
+
+<ul class="tree">
   {% recursetree workers %}
     <li>
+      <details>
+        <summary>
       {{ node.name}}
       job title:{{node.employment_position}}
       salary: {{node.salary}}
       start date: {{node.start_date|date:"d.m.Y"}}
 
         {% if not node.is_leaf_node %}
+          </summary>
             <ul class="children">
                 {{ children }}
             </ul>
         {% endif %}
+        </details>
     </li>
   {% endrecursetree %}
 </ul>
