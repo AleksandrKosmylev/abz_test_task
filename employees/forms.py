@@ -3,10 +3,7 @@ from employees.models import Employees
 
 
 class EmployeesForm(forms.ModelForm):
-    start_date = forms.DateField(
-        widget=forms.DateInput(attrs={"type": "date"})
-    )
-    photo = forms.ImageField(label="photo")
+
 
     class Meta:
         model = Employees

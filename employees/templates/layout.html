@@ -6,28 +6,32 @@
 <html lang="en">
 <head>
    <meta charset="utf-8">
-  <link href="https://getbootstrap.com/2.0.2/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="{% static 'django_table_sort.css' %}"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
  <title>Employees</title>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a href="/" class="btn btn-dark">Employees tree</a>
+    <nav class="navbar-collapse navbar-expand-lg navbar-dark bg-dark">
+      <ul class="nav ">
+        <li><a href="/" class="btn btn-dark">Employees tree</a></li>
         
         {% if user.is_authenticated %}
-          <a href="{% url 'employees' %}" class="btn btn-dark">Employees list</a>
+           <li><a href="{% url 'employees' %}" class="btn btn-dark">Employees list</a></li>
 
-          <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <input type="submit" class="btn btn-warning" value="Log out"/>
-          </form>
-          <a href="{% url 'employee_create' %}" class="btn btn-warning" >Add employee</a>
+           <li>
+              <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <input type="submit" class="btn btn-primary" value="Log out"/>
+             </form>
+           </li>
+          <li><a href="{% url 'employee_create' %}" class="btn btn-primary" >Add employee</a></li>
         {% else %}
-          <a href="{% url 'login' %}" class="btn btn-warning" >Login</a>
-          <a href="{% url 'register' %}" class="btn btn-warning">Register</a>
+           <li><a href="{% url 'login' %}" class="btn btn-primary" >Login</a></li>
+        <li><a href="{% url 'register' %}" class="btn btn-primary">Register</a></li>
         {% endif %}
+        </ul>
     </nav>
 
   <br>
