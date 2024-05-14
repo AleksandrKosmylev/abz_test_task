@@ -1,10 +1,9 @@
 from faker import Faker
 from employees.models import Employees
 from datetime import datetime
-from django.core.files import File
 import os
 import random
-from employees_catalog.settings import MEDIA_ROOT, BASE_DIR
+from employees_catalog.settings import MEDIA_ROOT
 
 fake = Faker(['ru_RU', 'en_US', 'de_DE', 'it_IT', 'fr_FR'])
 Faker.seed(4321)
